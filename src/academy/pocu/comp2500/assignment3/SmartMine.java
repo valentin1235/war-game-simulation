@@ -2,7 +2,7 @@ package academy.pocu.comp2500.assignment3;
 
 import java.util.ArrayList;
 
-public final class SmartMine extends Mine implements ITinkable {
+public final class SmartMine extends Mine implements IThinkable {
     private final int sensibleBombCnt;
 
     public SmartMine(IntVector2D position, int onTouchBombCnt, int sensibleBombCnt) {
@@ -51,21 +51,29 @@ public final class SmartMine extends Mine implements ITinkable {
         }
         if (unit.getPosition().getX() == this.position.getX() && unit.getPosition().getY() == this.position.getY()) {
             return true;
-        } else if (unit.getPosition().getX() == this.position.getX() && unit.getPosition().getY() == this.position.getY() - 1) {
+        } else if (unit.getPosition().getX() == this.position.getX()
+                && unit.getPosition().getY() == this.position.getY() - 1) {
             return true;
-        } else if (unit.getPosition().getX() == this.position.getX() + 1 && unit.getPosition().getY() == this.position.getY() - 1) {
+        } else if (unit.getPosition().getX() == this.position.getX() + 1
+                && unit.getPosition().getY() == this.position.getY() - 1) {
             return true;
-        } else if (unit.getPosition().getX() == this.position.getX() + 1 && unit.getPosition().getY() == this.position.getY()) {
+        } else if (unit.getPosition().getX() == this.position.getX() + 1
+                && unit.getPosition().getY() == this.position.getY()) {
             return true;
-        } else if (unit.getPosition().getX() == this.position.getX() + 1 && unit.getPosition().getY() == this.position.getY() + 1) {
+        } else if (unit.getPosition().getX() == this.position.getX() + 1
+                && unit.getPosition().getY() == this.position.getY() + 1) {
             return true;
-        } else if (unit.getPosition().getX() == this.position.getX() && unit.getPosition().getY() == this.position.getY() + 1) {
+        } else if (unit.getPosition().getX() == this.position.getX()
+                && unit.getPosition().getY() == this.position.getY() + 1) {
             return true;
-        } else if (unit.getPosition().getX() == this.position.getX() - 1 && unit.getPosition().getY() == this.position.getY() + 1) {
+        } else if (unit.getPosition().getX() == this.position.getX() - 1
+                && unit.getPosition().getY() == this.position.getY() + 1) {
             return true;
-        } else if (unit.getPosition().getX() == this.position.getX() - 1 && unit.getPosition().getY() == this.position.getY()) {
+        } else if (unit.getPosition().getX() == this.position.getX() - 1
+                && unit.getPosition().getY() == this.position.getY()) {
             return true;
-        } else if (unit.getPosition().getX() == this.position.getX() - 1 && unit.getPosition().getY() == this.position.getY() - 1) {
+        } else if (unit.getPosition().getX() == this.position.getX() - 1
+                && unit.getPosition().getY() == this.position.getY() - 1) {
             return true;
         }
         return false;

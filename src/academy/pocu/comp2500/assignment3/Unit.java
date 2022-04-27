@@ -1,6 +1,5 @@
 package academy.pocu.comp2500.assignment3;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -88,9 +87,7 @@ public abstract class Unit {
         return null;
     }
 
-    public void rest() {
-
-    }
+    public void rest() {}
 
     public IntVector2D getMovingPoint() {
         return this.movingPoint;
@@ -143,17 +140,14 @@ public abstract class Unit {
             this.loggerAngle("getAngle", target.getX(), target.getY(), angle);
         } else if (dx > 0 && dy < 0.0) {
             // 1사분면
-
             angle += 90;
             this.loggerAngle("getAngle", target.getX(), target.getY(), angle);
         } else if (dx < 0.0 && dy < 0.0) {
             // 2사분면
-
             angle += 270;
             this.loggerAngle("getAngle", target.getX(), target.getY(), angle);
         } else if (dx > 0.0 && dy > 0.0) {
             // 4사분면
-
             angle += 90;
             this.loggerAngle("getAngle", target.getX(), target.getY(), angle);
         } else {
@@ -165,12 +159,11 @@ public abstract class Unit {
                 angle = 90.0;
             }
         }
+
         return angle;
     }
 
-    public void update() {
-
-    }
+    public void update() {}
 
     public void findAttackingPointByPosition(ArrayList<Unit> targets) {
         boolean isContinue = true;

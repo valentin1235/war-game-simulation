@@ -6,7 +6,7 @@ public final class SimulationManager {
     private static SimulationManager instance;
     private final ArrayList<Unit> units;
     private final ArrayList<IMovable> movables;
-    private final ArrayList<ITinkable> thinkables;
+    private final ArrayList<IThinkable> thinkables;
     private final ArrayList<ICollisionEventListener> collisionEventListeners;
 
     private SimulationManager() {
@@ -33,7 +33,7 @@ public final class SimulationManager {
         this.units.add(unit);
     }
 
-    public void registerThinkable(ITinkable thinkable) {
+    public void registerThinkable(IThinkable thinkable) {
         this.thinkables.add(thinkable);
     }
 
@@ -49,7 +49,7 @@ public final class SimulationManager {
         final ArrayList<AttackIntent> attackIntents = new ArrayList<>();
 
         // 1. 각 유닛들이 이번 프레임에서 할 행동(선택지: 공격, 이동, 아무것도 안 함)을 결정
-        for (ITinkable thinkable : this.thinkables) {
+        for (IThinkable thinkable : this.thinkables) {
             final ArrayList<Unit> victims = new ArrayList<>();
             final ArrayList<Unit> visibles = new ArrayList<>();
             Unit unit = (Unit) thinkable;
@@ -84,15 +84,14 @@ public final class SimulationManager {
         // 2. 움직일 수 있는 각 유닛에게 이동할 기회를 줌
         for (IMovable movable : this.movables) {
             movable.move();
-            Unit unit = (Unit) movable;
-            this.loggingMove("update", unit.getPosition().getX(), unit.getPosition().getY(), unit.getSymbol(), unit.getMovingPoint().getX(), unit.getMovingPoint().getY());
         }
 
         // 3. 충돌 처리
         for (Unit unit : this.units) {
             for (ICollisionEventListener listener : this.collisionEventListeners) {
                 Unit listenerUnit = (Unit) listener;
-                if (listenerUnit.getHp() != 0 && unit != listenerUnit && unit.getType() != UnitType.AIR && listenerUnit.getPosition().equals(unit.getPosition())) {
+                if (listenerUnit.getHp() != 0 && unit != listenerUnit && unit.getType() != UnitType.AIR
+                        && listenerUnit.getPosition().equals(unit.getPosition())) {
                     final AttackIntent attackIntent = listener.bumpedAndGetAttackIntentOrNull(unit);
                     if (attackIntent != null) {
                         attackIntents.add(attackIntent);
@@ -121,13 +120,34 @@ public final class SimulationManager {
         }
 
         // 6. 죽은 유닛들을 모두 게임에서 제거함
-        int originalSize = this.units.size();
-        for (int i = originalSize - 1; i >= 0; i--) {
+        int unitsSize = this.units.size();
+        for (int i = unitsSize - 1; i >= 0; i--) {
             if (this.units.get(i).getHp() <= 0) {
-                this.thinkables.remove(this.units.get(i));
-                this.movables.remove(this.units.get(i));
-                this.collisionEventListeners.remove(this.units.get(i));
                 this.units.remove(i);
+            }
+        }
+
+        int thinkablesSize = this.thinkables.size();
+        for (int i = thinkablesSize - 1; i >= 0; i--) {
+            Unit unit = (Unit)this.thinkables.get(i);
+            if (unit.getHp() <= 0) {
+                this.thinkables.remove((IThinkable) unit);
+            }
+        }
+
+        int movablesSize = this.movables.size();
+        for (int i = movablesSize - 1; i >= 0; i--) {
+            Unit unit = (Unit)this.movables.get(i);
+            if (unit.getHp() <= 0) {
+                this.movables.remove((IMovable) unit);
+            }
+        }
+
+        int collisionablesSize = this.collisionEventListeners.size();
+        for (int i = collisionablesSize - 1; i >= 0; i--) {
+            Unit unit = (Unit)this.collisionEventListeners.get(i);
+            if (unit.getHp() <= 0) {
+                this.collisionEventListeners.remove((ICollisionEventListener) unit);
             }
         }
 
@@ -135,17 +155,5 @@ public final class SimulationManager {
         for (Unit unit : this.units) {
             unit.update();
         }
-    }
-
-    private void loggingSeperator() {
-        System.out.println("------------------------------");
-    }
-
-    private void loggingDeath(int x, int y, char symbol, int hp) {
-        System.out.println(String.format("* (%s)x%sy%shp%s", symbol, x, y, hp));
-    }
-
-    private void loggingMove(String funcName, int x, int y, char symbol, int dx, int dy) {
-        System.out.println(String.format("* SimulationManager.%s / moved to (%s)x%sy%s till (%s)x%sy%s", funcName, symbol, x, y, symbol, dx, dy));
     }
 }

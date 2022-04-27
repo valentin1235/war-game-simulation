@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment3;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public final class Tank extends Unit implements IMovable, ITinkable {
+public final class Tank extends Unit implements IMovable, IThinkable {
     private TankMode mode;
     private boolean isTransforming;
 
@@ -26,7 +26,8 @@ public final class Tank extends Unit implements IMovable, ITinkable {
             case TANK:
                 break;
             case SIEGE:
-                if (this.actionType == ActionType.ATTACK && !isTransforming && !this.attackingPoint.equals(this.position)) {
+                if (this.actionType == ActionType.ATTACK && !isTransforming
+                        && !this.attackingPoint.equals(this.position)) {
                     attackIntent = new AttackIntent(this.attackingPoint, this);
                 }
                 break;
@@ -63,84 +64,96 @@ public final class Tank extends Unit implements IMovable, ITinkable {
         if (targets.size() > 1) {
             boolean isContinue = true;
             for (int i = 0; i < targets.size() && isContinue; i++) {
-                if (this.getPosition().getX() == targets.get(i).getPosition().getX() && this.getPosition().getY() - 2 == targets.get(i).getPosition().getY()) {
+                if (this.getPosition().getX() == targets.get(i).getPosition().getX()
+                        && this.getPosition().getY() - 2 == targets.get(i).getPosition().getY()) {
                     targets.add(targets.get(i));
                     isContinue = false;
                     break;
                 }
             }
             for (int i = 0; i < targets.size() && isContinue; i++) {
-                if (this.getPosition().getX() + 1 == targets.get(i).getPosition().getX() && this.getPosition().getY() - 2 == targets.get(i).getPosition().getY()) {
+                if (this.getPosition().getX() + 1 == targets.get(i).getPosition().getX()
+                        && this.getPosition().getY() - 2 == targets.get(i).getPosition().getY()) {
                     targets.add(targets.get(i));
                     isContinue = false;
                     break;
                 }
             }
             for (int i = 0; i < targets.size() && isContinue; i++) {
-                if (this.getPosition().getX() + 2 == targets.get(i).getPosition().getX() && this.getPosition().getY() - 1 == targets.get(i).getPosition().getY()) {
+                if (this.getPosition().getX() + 2 == targets.get(i).getPosition().getX()
+                        && this.getPosition().getY() - 1 == targets.get(i).getPosition().getY()) {
                     targets.add(targets.get(i));
                     isContinue = false;
                     break;
                 }
             }
             for (int i = 0; i < targets.size() && isContinue; i++) {
-                if (this.getPosition().getX() + 2 == targets.get(i).getPosition().getX() && this.getPosition().getY() == targets.get(i).getPosition().getY()) {
+                if (this.getPosition().getX() + 2 == targets.get(i).getPosition().getX()
+                        && this.getPosition().getY() == targets.get(i).getPosition().getY()) {
                     targets.add(targets.get(i));
                     isContinue = false;
                     break;
                 }
             }
             for (int i = 0; i < targets.size() && isContinue; i++) {
-                if (this.getPosition().getX() + 2 == targets.get(i).getPosition().getX() && this.getPosition().getY() + 1 == targets.get(i).getPosition().getY()) {
+                if (this.getPosition().getX() + 2 == targets.get(i).getPosition().getX()
+                        && this.getPosition().getY() + 1 == targets.get(i).getPosition().getY()) {
                     targets.add(targets.get(i));
                     isContinue = false;
                     break;
                 }
             }
             for (int i = 0; i < targets.size() && isContinue; i++) {
-                if (this.getPosition().getX() + 1 == targets.get(i).getPosition().getX() && this.getPosition().getY() + 2 == targets.get(i).getPosition().getY()) {
+                if (this.getPosition().getX() + 1 == targets.get(i).getPosition().getX()
+                        && this.getPosition().getY() + 2 == targets.get(i).getPosition().getY()) {
                     targets.add(targets.get(i));
                     isContinue = false;
                     break;
                 }
             }
             for (int i = 0; i < targets.size() && isContinue; i++) {
-                if (this.getPosition().getX() == targets.get(i).getPosition().getX() && this.getPosition().getY() + 2 == targets.get(i).getPosition().getY()) {
+                if (this.getPosition().getX() == targets.get(i).getPosition().getX()
+                        && this.getPosition().getY() + 2 == targets.get(i).getPosition().getY()) {
                     targets.add(targets.get(i));
                     isContinue = false;
                     break;
                 }
             }
             for (int i = 0; i < targets.size() && isContinue; i++) {
-                if (this.getPosition().getX() - 1 == targets.get(i).getPosition().getX() && this.getPosition().getY() + 2 == targets.get(i).getPosition().getY()) {
+                if (this.getPosition().getX() - 1 == targets.get(i).getPosition().getX()
+                        && this.getPosition().getY() + 2 == targets.get(i).getPosition().getY()) {
                     targets.add(targets.get(i));
                     isContinue = false;
                     break;
                 }
             }
             for (int i = 0; i < targets.size() && isContinue; i++) {
-                if (this.getPosition().getX() - 2 == targets.get(i).getPosition().getX() && this.getPosition().getY() + 1 == targets.get(i).getPosition().getY()) {
+                if (this.getPosition().getX() - 2 == targets.get(i).getPosition().getX()
+                        && this.getPosition().getY() + 1 == targets.get(i).getPosition().getY()) {
                     targets.add(targets.get(i));
                     isContinue = false;
                     break;
                 }
             }
             for (int i = 0; i < targets.size() && isContinue; i++) {
-                if (this.getPosition().getX() - 2 == targets.get(i).getPosition().getX() && this.getPosition().getY() == targets.get(i).getPosition().getY()) {
+                if (this.getPosition().getX() - 2 == targets.get(i).getPosition().getX()
+                        && this.getPosition().getY() == targets.get(i).getPosition().getY()) {
                     targets.add(targets.get(i));
                     isContinue = false;
                     break;
                 }
             }
             for (int i = 0; i < targets.size() && isContinue; i++) {
-                if (this.getPosition().getX() - 2 == targets.get(i).getPosition().getX() && this.getPosition().getY() - 1 == targets.get(i).getPosition().getY()) {
+                if (this.getPosition().getX() - 2 == targets.get(i).getPosition().getX()
+                        && this.getPosition().getY() - 1 == targets.get(i).getPosition().getY()) {
                     targets.add(targets.get(i));
                     isContinue = false;
                     break;
                 }
             }
             for (int i = 0; i < targets.size() && isContinue; i++) {
-                if (this.getPosition().getX() - 1 == targets.get(i).getPosition().getX() && this.getPosition().getY() - 2 == targets.get(i).getPosition().getY()) {
+                if (this.getPosition().getX() - 1 == targets.get(i).getPosition().getX()
+                        && this.getPosition().getY() - 2 == targets.get(i).getPosition().getY()) {
                     targets.add(targets.get(i));
                     isContinue = false;
                     break;
@@ -188,25 +201,32 @@ public final class Tank extends Unit implements IMovable, ITinkable {
             return true;
         } else if (unit.position.getY() == this.position.getY() + 2 && unit.position.getX() == this.position.getX()) {
             return true;
-        } else if (unit.position.getY() == this.position.getY() + 2 && unit.position.getX() == this.position.getX() + 1) {
+        } else if (unit.position.getY() == this.position.getY() + 2
+                && unit.position.getX() == this.position.getX() + 1) {
             return true;
-        } else if (unit.position.getY() == this.position.getY() + 1 && unit.position.getX() == this.position.getX() + 2) {
+        } else if (unit.position.getY() == this.position.getY() + 1
+                && unit.position.getX() == this.position.getX() + 2) {
             return true;
         } else if (unit.position.getY() == this.position.getY() && unit.position.getX() == this.position.getX() + 2) {
             return true;
-        } else if (unit.position.getY() == this.position.getY() - 1 && unit.position.getX() == this.position.getX() + 2) {
+        } else if (unit.position.getY() == this.position.getY() - 1
+                && unit.position.getX() == this.position.getX() + 2) {
             return true;
-        } else if (unit.position.getY() == this.position.getY() - 2 && unit.position.getX() == this.position.getX() + 1) {
+        } else if (unit.position.getY() == this.position.getY() - 2
+                && unit.position.getX() == this.position.getX() + 1) {
             return true;
         } else if (unit.position.getY() == this.position.getY() - 2 && unit.position.getX() == this.position.getX()) {
             return true;
-        } else if (unit.position.getY() == this.position.getY() - 2 && unit.position.getX() == this.position.getX() - 1) {
+        } else if (unit.position.getY() == this.position.getY() - 2
+                && unit.position.getX() == this.position.getX() - 1) {
             return true;
-        } else if (unit.position.getY() == this.position.getY() - 1 && unit.position.getX() == this.position.getX() - 2) {
+        } else if (unit.position.getY() == this.position.getY() - 1
+                && unit.position.getX() == this.position.getX() - 2) {
             return true;
         } else if (unit.position.getY() == this.position.getY() && unit.position.getX() == this.position.getX() - 2) {
             return true;
-        } else if (unit.position.getY() == this.position.getY() + 1 && unit.position.getX() == this.position.getX() - 2) {
+        } else if (unit.position.getY() == this.position.getY() + 1
+                && unit.position.getX() == this.position.getX() - 2) {
             return true;
         }
 
@@ -218,7 +238,8 @@ public final class Tank extends Unit implements IMovable, ITinkable {
         if (this == unit || unit.getType() != UnitType.LAND || unit.getSymbol() == 'N' || unit.getSymbol() == 'A') {
             return false;
         } else {
-            return Math.abs(this.getDistance(unit.getPosition())[0]) <= 3 && Math.abs(this.getDistance(unit.getPosition())[1]) <= 3;
+            return Math.abs(this.getDistance(unit.getPosition())[0]) <= 3
+                    && Math.abs(this.getDistance(unit.getPosition())[1]) <= 3;
         }
     }
 
@@ -265,6 +286,7 @@ public final class Tank extends Unit implements IMovable, ITinkable {
 
         }
     }
+
     private void loggerMode(String direction, boolean shouldStop) {
         System.out.println(String.format("%s에 적발견? %s", direction, shouldStop));
     }

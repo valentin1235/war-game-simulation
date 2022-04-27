@@ -1,7 +1,6 @@
 package academy.pocu.comp2500.assignment3.app;
 
 import academy.pocu.comp2500.assignment3.Unit;
-
 import java.util.ArrayList;
 
 /**

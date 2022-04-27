@@ -1,6 +1,5 @@
 package academy.pocu.comp2500.assignment3.app;
 
-import academy.pocu.comp2500.assignment3.App;
 import academy.pocu.comp2500.assignment3.Destroyer;
 import academy.pocu.comp2500.assignment3.SimulationManager;
 import academy.pocu.comp2500.assignment3.IntVector2D;
@@ -11,7 +10,6 @@ import academy.pocu.comp2500.assignment3.Tank;
 import academy.pocu.comp2500.assignment3.Turret;
 import academy.pocu.comp2500.assignment3.Unit;
 import academy.pocu.comp2500.assignment3.Wraith;
-import academy.pocu.comp2500.assignment3.registry.Registry;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment3;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public final class Wraith extends Unit implements IMovable, ITinkable {
+public final class Wraith extends Unit implements IMovable, IThinkable {
     private boolean isProtected;
     private final IntVector2D initialPosition;
     private int onAttackCnt;
@@ -71,7 +71,8 @@ public final class Wraith extends Unit implements IMovable, ITinkable {
             this.findLowestHp(targets);
         }
 
-        // 1-3. 공중유닛 중 자신의 위치에 유닛이 있다면 그 타일을 공격. 그렇지 않을 경우 북쪽(위쪽)에 유닛이 있다면 그 타일을 공격. 그렇지 않을 경우 시계 방향으로 검색하다 찾은 유닛의 타일을 공격
+        // 1-3. 공중유닛 중 자신의 위치에 유닛이 있다면 그 타일을 공격. 그렇지 않을 경우 북쪽(위쪽)에 유닛이 있다면 그 타일을 공격. 그렇지
+        // 않을 경우 시계 방향으로 검색하다 찾은 유닛의 타일을 공격
         if (targets.size() > 1) {
             this.findAttackingPointByPosition(targets);
         }
@@ -91,7 +92,8 @@ public final class Wraith extends Unit implements IMovable, ITinkable {
             }
         }
 
-        // 2-2 지상유닛 중 자신의 위치에 유닛이 있다면 그 타일을 공격. 그렇지 않을 경우 북쪽(위쪽)에 유닛이 있다면 그 타일을 공격. 그렇지 않을 경우 시계 방향으로 검색하다 찾은 유닛의 타일을 공격
+        // 2-2 지상유닛 중 자신의 위치에 유닛이 있다면 그 타일을 공격. 그렇지 않을 경우 북쪽(위쪽)에 유닛이 있다면 그 타일을 공격. 그렇지
+        // 않을 경우 시계 방향으로 검색하다 찾은 유닛의 타일을 공격
         if (targets.size() > 1) {
             this.findAttackingPointByPosition(targets);
         }
@@ -114,7 +116,8 @@ public final class Wraith extends Unit implements IMovable, ITinkable {
         targets.sort(Comparator.comparing(o -> this.getAbsoluteDistance(o.getPosition())));
         final int orignalSize = targets.size();
         for (int i = orignalSize - 1; i >= 1; i--) {
-            if (this.getAbsoluteDistance(targets.get(i).getPosition()) > this.getAbsoluteDistance(targets.get(0).getPosition())) {
+            if (this.getAbsoluteDistance(targets.get(i).getPosition()) > this
+                    .getAbsoluteDistance(targets.get(0).getPosition())) {
                 targets.remove(i);
             }
         }
@@ -160,7 +163,8 @@ public final class Wraith extends Unit implements IMovable, ITinkable {
 
             // 2-1 지상유닛 중 가장 가까이 있는 유닛 쪽으로 이동
             for (int i = 1; i < units.size(); i++) {
-                if (targets.get(targets.size() - 1).getAbsoluteDistance(this.position) == units.get(i).getAbsoluteDistance(this.position)) {
+                if (targets.get(targets.size() - 1).getAbsoluteDistance(this.position) == units.get(i)
+                        .getAbsoluteDistance(this.position)) {
                     targets.add(units.get(i));
                 } else {
                     break;
@@ -179,7 +183,8 @@ public final class Wraith extends Unit implements IMovable, ITinkable {
         }
 
         IntVector2D targetPosition = targets.get(targets.size() - 1).getPosition();
-        System.out.println(String.format("in find moving point, myPosition(%s, %s), targetPosition(%s, %s)", this.position.getX(), this.position.getY(), targetPosition.getX(), targetPosition.getY()));
+        System.out.println(String.format("in find moving point, myPosition(%s, %s), targetPosition(%s, %s)",
+                this.position.getX(), this.position.getY(), targetPosition.getX(), targetPosition.getY()));
         return new IntVector2D(targetPosition.getX(), targetPosition.getY());
     }
 
@@ -208,13 +213,15 @@ public final class Wraith extends Unit implements IMovable, ITinkable {
         if (this == unit || unit.getSymbol() == 'N' || unit.getSymbol() == 'A') {
             return false;
         }
-        return Math.abs(this.getDistance(unit.getPosition())[0]) <= 4 && Math.abs(this.getDistance(unit.getPosition())[1]) <= 4;
+        return Math.abs(this.getDistance(unit.getPosition())[0]) <= 4
+                && Math.abs(this.getDistance(unit.getPosition())[1]) <= 4;
     }
 
     @Override
     public void move() {
         if (this.actionType == ActionType.MOVE) {
-            System.out.println(String.format("in actual move, myPosition(%s, %s), movingPoint(%s, %s)", this.position.getX(), this.position.getY(), this.movingPoint.getX(), this.movingPoint.getY()));
+            System.out.println(String.format("in actual move, myPosition(%s, %s), movingPoint(%s, %s)",
+                    this.position.getX(), this.position.getY(), this.movingPoint.getX(), this.movingPoint.getY()));
             if (this.getDistance(this.movingPoint)[1] < 0) {
                 this.getPosition().setY(this.getPosition().getY() - 1);
             } else if (this.getDistance(this.movingPoint)[1] > 0) {

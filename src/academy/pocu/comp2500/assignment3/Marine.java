@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment3;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public final class Marine extends Unit implements IMovable, ITinkable {
+public final class Marine extends Unit implements IMovable, IThinkable {
     public Marine(IntVector2D position) {
         super(position, 'M', UnitType.LAND, 2, 0, 6, 35, true, true, position);
     }
@@ -37,8 +37,8 @@ public final class Marine extends Unit implements IMovable, ITinkable {
             }
         }
 
-
-        // 2. 자신의 위치에 유닛이 있다면 그 타일을 공격. 그렇지 않을 경우 북쪽(위쪽)에 유닛이 있다면 그 타일을 공격. 그렇지 않을 경우 시계 방향으로 검색하다 찾은 유닛의 타일을 공격
+        // 2. 자신의 위치에 유닛이 있다면 그 타일을 공격. 그렇지 않을 경우 북쪽(위쪽)에 유닛이 있다면 그 타일을 공격. 그렇지 않을 경우 시계
+        // 방향으로 검색하다 찾은 유닛의 타일을 공격
         if (targets.size() > 1) {
             this.findAttackingPointByPosition(targets);
         }
@@ -65,7 +65,8 @@ public final class Marine extends Unit implements IMovable, ITinkable {
         targets.add(units.get(0));
 
         for (int i = 1; i < units.size(); i++) {
-            if (targets.get(targets.size() - 1).getAbsoluteDistance(this.position) == units.get(i).getAbsoluteDistance(this.position)) {
+            if (targets.get(targets.size() - 1).getAbsoluteDistance(this.position) == units.get(i)
+                    .getAbsoluteDistance(this.position)) {
                 targets.add(units.get(i));
             } else {
                 break;
@@ -82,7 +83,9 @@ public final class Marine extends Unit implements IMovable, ITinkable {
             this.findMovingPointByPosition(targets);
         }
 
-        loggerMovingPosition(this.position.getX(), this.position.getY(), targets.get(targets.size() - 1).getPosition().getX(), targets.get(targets.size() - 1).getPosition().getY(), "findMovingPointOrNull");
+        loggerMovingPosition(this.position.getX(), this.position.getY(),
+                targets.get(targets.size() - 1).getPosition().getX(),
+                targets.get(targets.size() - 1).getPosition().getY(), "findMovingPointOrNull");
 
         IntVector2D targetPosition = targets.get(targets.size() - 1).getPosition();
         return new IntVector2D(targetPosition.getX(), targetPosition.getY());
@@ -112,12 +115,14 @@ public final class Marine extends Unit implements IMovable, ITinkable {
         if (this == unit || unit.getSymbol() == 'N' || unit.getSymbol() == 'A') {
             return false;
         }
-        return Math.abs(this.getDistance(unit.getPosition())[0]) <= 2 && Math.abs(this.getDistance(unit.getPosition())[1]) <= 2;
+        return Math.abs(this.getDistance(unit.getPosition())[0]) <= 2
+                && Math.abs(this.getDistance(unit.getPosition())[1]) <= 2;
     }
 
     @Override
     public void move() {
-        loggerMovingPosition(this.position.getX(), this.position.getY(), this.movingPoint.getX(), this.movingPoint.getY(), "move");
+        loggerMovingPosition(this.position.getX(), this.position.getY(), this.movingPoint.getX(),
+                this.movingPoint.getY(), "move");
         if (this.actionType == ActionType.MOVE) {
             if (this.getDistance(this.movingPoint)[1] < 0) {
                 this.getPosition().setY(this.getPosition().getY() - 1);
@@ -132,6 +137,7 @@ public final class Marine extends Unit implements IMovable, ITinkable {
     }
 
     private void loggerMovingPosition(int myX, int myY, int targetX, int targetY, String funcName) {
-        System.out.println(String.format("* Marin.%s / moving from me-x%sy%s to target-x%sy%s", funcName, myX, myY, targetX, targetY));
+        System.out.println(String.format("* Marin.%s / moving from me-x%sy%s to target-x%sy%s", funcName, myX, myY,
+                targetX, targetY));
     }
 }
