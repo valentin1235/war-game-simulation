@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.assignment3;
+package wargame;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,7 +18,8 @@ public abstract class Unit {
     protected IntVector2D movingPoint;
     protected ActionType actionType;
 
-    protected Unit(IntVector2D position, char symbol, UnitType type, int vision, int aoe, int ap, int hp, boolean airAttackable, boolean landAttackable, IntVector2D movingPoint) {
+    protected Unit(IntVector2D position, char symbol, UnitType type, int vision, int aoe, int ap, int hp,
+            boolean airAttackable, boolean landAttackable, IntVector2D movingPoint) {
         this.position = position;
         this.symbol = symbol;
         this.type = type;
@@ -87,7 +88,8 @@ public abstract class Unit {
         return null;
     }
 
-    public void rest() {}
+    public void rest() {
+    }
 
     public IntVector2D getMovingPoint() {
         return this.movingPoint;
@@ -125,9 +127,11 @@ public abstract class Unit {
             return;
         }
         for (Unit unit : targets) {
-            System.out.println(String.format("P(%s,%s) A%s", unit.getPosition().getX(), unit.getPosition().getY(), this.getAngle(this.getPosition(), unit.getPosition())));
+            System.out.println(String.format("P(%s,%s) A%s", unit.getPosition().getX(), unit.getPosition().getY(),
+                    this.getAngle(this.getPosition(), unit.getPosition())));
         }
-        targets.sort(Comparator.comparing(o -> this.getAngle(this.getPosition(), o.getPosition()), Comparator.reverseOrder()));
+        targets.sort(Comparator.comparing(o -> this.getAngle(this.getPosition(), o.getPosition()),
+                Comparator.reverseOrder()));
     }
 
     private double getAngle(IntVector2D me, IntVector2D target) {
@@ -163,7 +167,8 @@ public abstract class Unit {
         return angle;
     }
 
-    public void update() {}
+    public void update() {
+    }
 
     public void findAttackingPointByPosition(ArrayList<Unit> targets) {
         boolean isContinue = true;
@@ -215,6 +220,7 @@ public abstract class Unit {
     }
 
     private void loggerAngle(String funcName, int x, int y, double angle) {
-        System.out.println(String.format("* Unit.%s / target(%s,%s) dx > 0.0 && dy > 0.0, 4사분면 %s", funcName, x, y, angle));
+        System.out.println(
+                String.format("* Unit.%s / target(%s,%s) dx > 0.0 && dy > 0.0, 4사분면 %s", funcName, x, y, angle));
     }
 }

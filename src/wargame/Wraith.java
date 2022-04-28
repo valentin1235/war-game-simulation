@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.assignment3;
+package wargame;
 
 import java.util.ArrayList;
 import java.util.Comparator;

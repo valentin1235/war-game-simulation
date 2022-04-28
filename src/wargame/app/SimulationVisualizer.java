@@ -1,6 +1,6 @@
-package academy.pocu.comp2500.assignment3.app;
+package wargame.app;
 
-import academy.pocu.comp2500.assignment3.Unit;
+import wargame.Unit;
 import java.util.ArrayList;
 
 /**

@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.assignment3;
+package wargame;
 
 import java.util.ArrayList;
 
@@ -19,9 +19,12 @@ public class AttackIntent {
         return (int) damage;
     }
 
-    private void logger(String funcName, String type, char fromSymbol, int fromX, int fromY, char toSymbol, int toX, int toY, int damage) {
-        System.out.println(String.format("* AttackIndent.%s / %s attack from (%s)x%sy%s to (%s)x%sy%s (d)%s", funcName, type, fromSymbol, fromX, fromY, toSymbol, toX, toY, damage));
+    private void logger(String funcName, String type, char fromSymbol, int fromX, int fromY, char toSymbol, int toX,
+            int toY, int damage) {
+        System.out.println(String.format("* AttackIndent.%s / %s attack from (%s)x%sy%s to (%s)x%sy%s (d)%s", funcName,
+                type, fromSymbol, fromX, fromY, toSymbol, toX, toY, damage));
     }
+
     private void loggingSeperator() {
         System.out.println("------------------------------");
     }
@@ -40,8 +43,11 @@ public class AttackIntent {
 
         for (int x = -this.attackFrom.getAoe(); x <= this.attackFrom.getAoe(); x++) {
             for (int y = -this.attackFrom.getAoe(); y <= this.attackFrom.getAoe(); y++) {
-                if (!(x == 0 && y == 0) && attackingPoint.getX() + x == objPosition.getX() && attackingPoint.getY() + y == objPosition.getY() && this.isAttackable(object)) {
-                    logger("splashAttack", "splash", this.attackFrom.getSymbol(), this.attackFrom.getPosition().getX(), this.attackFrom.getPosition().getY(), object.getSymbol(), object.getPosition().getX(), object.getPosition().getY(), splashDamage);
+                if (!(x == 0 && y == 0) && attackingPoint.getX() + x == objPosition.getX()
+                        && attackingPoint.getY() + y == objPosition.getY() && this.isAttackable(object)) {
+                    logger("splashAttack", "splash", this.attackFrom.getSymbol(), this.attackFrom.getPosition().getX(),
+                            this.attackFrom.getPosition().getY(), object.getSymbol(), object.getPosition().getX(),
+                            object.getPosition().getY(), splashDamage);
                     object.onAttacked(splashDamage);
                 }
             }
@@ -53,13 +59,16 @@ public class AttackIntent {
             return;
         }
         final int directDamage = this.getDamage(attackFrom.ap, 0, attackFrom.getAoe());
-        logger("directAttack", "direct", this.attackFrom.getSymbol(), this.attackFrom.getPosition().getX(), this.attackFrom.getPosition().getY(), object.getSymbol(), object.getPosition().getX(), object.getPosition().getY(), directDamage);
+        logger("directAttack", "direct", this.attackFrom.getSymbol(), this.attackFrom.getPosition().getX(),
+                this.attackFrom.getPosition().getY(), object.getSymbol(), object.getPosition().getX(),
+                object.getPosition().getY(), directDamage);
         object.onAttacked(directDamage);
     }
 
     public void realize(ArrayList<Unit> units) {
         for (Unit object : units) {
-            if (object != attackFrom && attackFrom.getAoe() == 0 && attackingPoint.equals(object.getPosition()) && this.isAttackable(object)) {
+            if (object != attackFrom && attackFrom.getAoe() == 0 && attackingPoint.equals(object.getPosition())
+                    && this.isAttackable(object)) {
                 this.directAttack(object);
             }
 

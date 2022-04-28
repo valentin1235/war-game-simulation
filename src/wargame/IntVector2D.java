@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.assignment3;
+package wargame;
 
 public class IntVector2D {
     private int x;

@@ -1,15 +1,15 @@
-package academy.pocu.comp2500.assignment3.app;
+package wargame.app;
 
-import academy.pocu.comp2500.assignment3.Destroyer;
-import academy.pocu.comp2500.assignment3.SimulationManager;
-import academy.pocu.comp2500.assignment3.IntVector2D;
-import academy.pocu.comp2500.assignment3.Marine;
-import academy.pocu.comp2500.assignment3.Mine;
-import academy.pocu.comp2500.assignment3.SmartMine;
-import academy.pocu.comp2500.assignment3.Tank;
-import academy.pocu.comp2500.assignment3.Turret;
-import academy.pocu.comp2500.assignment3.Unit;
-import academy.pocu.comp2500.assignment3.Wraith;
+import wargame.Destroyer;
+import wargame.SimulationManager;
+import wargame.IntVector2D;
+import wargame.Marine;
+import wargame.Mine;
+import wargame.SmartMine;
+import wargame.Tank;
+import wargame.Turret;
+import wargame.Unit;
+import wargame.Wraith;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,29 +19,28 @@ import java.util.ArrayList;
 public class Program {
 
     public static void main(String[] args) {
-//        MarinWeakestAtEast();
-//        MarinWeakestAtSouth();
-//        MarinHpAttackTest();
-//        MarinDirectionMoveTest();
-//        TurretWraithTest();
-//        TankAndTurret();
-//        WraithBackToInitialPosition();
-//        TankNotAttackWraith();
-//        MineGrountUnit();
-//        MineAirUnit();
-//        TurretNoAirNoAction();
-//        SmartMineBombSensor();
+        // MarinWeakestAtEast();
+        // MarinWeakestAtSouth();
+        // MarinHpAttackTest();
+        // MarinDirectionMoveTest();
+        // TurretWraithTest();
+        // TankAndTurret();
+        // WraithBackToInitialPosition();
+        // TankNotAttackWraith();
+        // MineGrountUnit();
+        // MineAirUnit();
+        // TurretNoAirNoAction();
+        // SmartMineBombSensor();
 
-//        SimulationTest0_0();
-//        SimulationTest0_1();
-//        SimulationTest0_2();
+        // SimulationTest0_0();
+        // SimulationTest0_1();
+        // SimulationTest0_2();
         SimulationTest0_3();
         // SimulationTest0_4();
     }
 
     public static void continueOnEnter() {
-        BufferedReader reader =
-                new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             System.out.println("Press enter to continue");
             reader.readLine();
@@ -68,10 +67,7 @@ public class Program {
         Unit marine3 = new Marine(new IntVector2D(5, 6));
         Unit marine4 = new Marine(new IntVector2D(8, 7));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
-
 
         units.add(marine1);
         units.add(marine2);
@@ -100,10 +96,7 @@ public class Program {
         Unit wraith3 = new Wraith(new IntVector2D(5, 6));
         Unit wraith4 = new Wraith(new IntVector2D(8, 7));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
-
 
         units.add(wraith1);
         units.add(wraith2);
@@ -131,8 +124,6 @@ public class Program {
         Unit turret1 = new Turret(new IntVector2D(6, 4));
         Unit turret2 = new Turret(new IntVector2D(6, 5));
         Unit turret3 = new Turret(new IntVector2D(6, 3));
-
-
 
         ArrayList<Unit> units = new ArrayList<>();
 
@@ -163,8 +154,6 @@ public class Program {
         Unit tank3 = new Tank(new IntVector2D(5, 6));
         Unit wraith1 = new Wraith(new IntVector2D(8, 6));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
 
         units.add(tank1);
@@ -194,7 +183,6 @@ public class Program {
         Unit turret2 = new Turret(new IntVector2D(4, 2));
         Unit turret3 = new Turret(new IntVector2D(4, 6));
         Unit marine1 = new Marine(new IntVector2D(4, 4));
-
 
         ArrayList<Unit> units = new ArrayList<>();
 
@@ -227,7 +215,6 @@ public class Program {
         Unit turret3 = new Turret(new IntVector2D(6, 4));
         Unit marine1 = new Marine(new IntVector2D(4, 4));
 
-
         ArrayList<Unit> units = new ArrayList<>();
 
         units.add(tank1);
@@ -259,7 +246,6 @@ public class Program {
         Unit turret3 = new Turret(new IntVector2D(5, 4));
         Unit marine1 = new Marine(new IntVector2D(4, 4));
 
-
         ArrayList<Unit> units = new ArrayList<>();
 
         units.add(tank1);
@@ -286,25 +272,25 @@ public class Program {
         SimulationManager simulationManager = SimulationManager.getInstance();
 
         // 마린 기준 1234분면
-//        Unit turret1 = new Turret(new IntVector2D(2, 6));
-//        Unit turret2 = new Turret(new IntVector2D(6, 6));
-//        Unit turret3 = new Turret(new IntVector2D(6, 2));
-//        Unit turret4 = new Turret(new IntVector2D(2, 2));
-//        Unit marine1 = new Marine(new IntVector2D(4, 4));
+        // Unit turret1 = new Turret(new IntVector2D(2, 6));
+        // Unit turret2 = new Turret(new IntVector2D(6, 6));
+        // Unit turret3 = new Turret(new IntVector2D(6, 2));
+        // Unit turret4 = new Turret(new IntVector2D(2, 2));
+        // Unit marine1 = new Marine(new IntVector2D(4, 4));
 
         // 마린 기준 동서남북
-//        Unit turret1 = new Turret(new IntVector2D(4, 2));
-//        Unit turret2 = new Turret(new IntVector2D(4, 6));
-//        Unit turret3 = new Turret(new IntVector2D(6, 4));
-//        Unit turret4 = new Turret(new IntVector2D(2, 4));
-//        Unit marine1 = new Marine(new IntVector2D(4, 4));
+        // Unit turret1 = new Turret(new IntVector2D(4, 2));
+        // Unit turret2 = new Turret(new IntVector2D(4, 6));
+        // Unit turret3 = new Turret(new IntVector2D(6, 4));
+        // Unit turret4 = new Turret(new IntVector2D(2, 4));
+        // Unit marine1 = new Marine(new IntVector2D(4, 4));
 
-        //        ArrayList<Unit> units = new ArrayList<>();
-//        units.add(turret1);
-//        units.add(turret2);
-//        units.add(turret3);
-//        units.add(turret4);
-//        units.add(marine1);
+        // ArrayList<Unit> units = new ArrayList<>();
+        // units.add(turret1);
+        // units.add(turret2);
+        // units.add(turret3);
+        // units.add(turret4);
+        // units.add(marine1);
 
         // 마린기준 남북쪽
         Unit turret1 = new Turret(new IntVector2D(4, 6));
@@ -316,9 +302,6 @@ public class Program {
         units.add(turret2);
         units.add(turret3);
         units.add(marine1);
-
-
-
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);
@@ -337,13 +320,11 @@ public class Program {
     public static void TurretWraithTest() {
         SimulationManager simulationManager = SimulationManager.getInstance();
 
-
         Unit turret1 = new Turret(new IntVector2D(4, 5));
         Unit turret2 = new Turret(new IntVector2D(4, 3));
         Unit turret3 = new Turret(new IntVector2D(5, 4));
         Unit turret4 = new Turret(new IntVector2D(3, 4));
         Unit wraith1 = new Wraith(new IntVector2D(4, 4));
-
 
         ArrayList<Unit> units = new ArrayList<>();
 
@@ -370,13 +351,11 @@ public class Program {
     public static void WraithShieldTest() {
         SimulationManager simulationManager = SimulationManager.getInstance();
 
-
         Unit wraith1 = new Wraith(new IntVector2D(4, 4));
         Unit turret1 = new Turret(new IntVector2D(4, 5));
         Unit turret2 = new Turret(new IntVector2D(4, 3));
         Unit turret3 = new Turret(new IntVector2D(5, 4));
         Unit turret4 = new Turret(new IntVector2D(3, 4));
-
 
         ArrayList<Unit> units = new ArrayList<>();
 
@@ -406,10 +385,7 @@ public class Program {
         Unit wraith1 = new Wraith(new IntVector2D(6, 6));
         Unit turret1 = new Marine(new IntVector2D(2, 2));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
-
 
         units.add(wraith1);
         units.add(turret1);
@@ -435,15 +411,11 @@ public class Program {
         Unit wraith1 = new Wraith(new IntVector2D(4, 6));
         Unit wraith2 = new Wraith(new IntVector2D(4, 5));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
-
 
         units.add(tank1);
         units.add(wraith1);
         units.add(wraith2);
-
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);
@@ -466,15 +438,11 @@ public class Program {
         Unit mine2 = new Mine(new IntVector2D(5, 6), 1);
         Unit tank1 = new Tank(new IntVector2D(4, 6));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
-
 
         units.add(mine1);
         units.add(mine2);
         units.add(tank1);
-
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);
@@ -498,16 +466,12 @@ public class Program {
         Unit wraith1 = new Wraith(new IntVector2D(4, 6));
         Unit turret1 = new Turret(new IntVector2D(7, 6));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
-
 
         units.add(mine1);
         units.add(mine2);
         units.add(wraith1);
         units.add(turret1);
-
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);
@@ -531,15 +495,12 @@ public class Program {
         Unit marine1 = new Marine(new IntVector2D(3, 5));
         Unit wraith1 = new Wraith(new IntVector2D(4, 5));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
 
         units.add(wraith1);
         units.add(tank1);
         units.add(turret1);
         units.add(marine1);
-
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);
@@ -565,8 +526,6 @@ public class Program {
         Unit smartMine1 = new SmartMine(new IntVector2D(3, 6), 2, 2);
         Unit marine2 = new Marine(new IntVector2D(3, 4));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
 
         units.add(wraith1);
@@ -575,7 +534,6 @@ public class Program {
         units.add(marine1);
         units.add(smartMine1);
         units.add(marine2);
-
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);
@@ -627,8 +585,6 @@ public class Program {
         // F
         Unit unit16 = new Wraith(new IntVector2D(4, 5));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
 
         units.add(unit1);
@@ -647,8 +603,6 @@ public class Program {
         units.add(unit14);
         units.add(unit15);
         units.add(unit16);
-
-
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);
@@ -699,9 +653,7 @@ public class Program {
         // E
         Unit unit14 = new Marine(new IntVector2D(11, 7));
         // F
-        Unit unit15 = new SmartMine(new IntVector2D(4, 7),3, 3);
-
-
+        Unit unit15 = new SmartMine(new IntVector2D(4, 7), 3, 3);
 
         ArrayList<Unit> units = new ArrayList<>();
 
@@ -721,8 +673,6 @@ public class Program {
         units.add(unit13);
         units.add(unit14);
         units.add(unit15);
-
-
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);
@@ -775,8 +725,6 @@ public class Program {
         // F
         Unit unit15 = new Wraith(new IntVector2D(15, 7));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
 
         units.add(unit0);
@@ -795,8 +743,6 @@ public class Program {
         units.add(unit13);
         units.add(unit14);
         units.add(unit15);
-
-
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);
@@ -849,8 +795,6 @@ public class Program {
         // F
         Unit unit15 = new Tank(new IntVector2D(12, 0));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
 
         units.add(unit0);
@@ -869,8 +813,6 @@ public class Program {
         units.add(unit13);
         units.add(unit14);
         units.add(unit15);
-
-
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);
@@ -923,8 +865,6 @@ public class Program {
         // F
         Unit unit15 = new Destroyer(new IntVector2D(8, 5));
 
-
-
         ArrayList<Unit> units = new ArrayList<>();
 
         units.add(unit0);
@@ -943,8 +883,6 @@ public class Program {
         units.add(unit13);
         units.add(unit14);
         units.add(unit15);
-
-
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);

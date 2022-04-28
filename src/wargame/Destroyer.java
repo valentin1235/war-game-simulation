@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.assignment3;
+package wargame;
 
 public final class Destroyer extends Unit {
     public Destroyer(IntVector2D position) {
