@@ -15,15 +15,16 @@
 - 결과를 확인합니다
 
 ## 테스트
-- cd 
+- `./src/wargame/app/Program.java` 에서 확인 가능합니다
+
 
 ## 데모영상
 - [LINK](https://youtu.be/7DalTaIuk_E)
 
 ## 실행
 #### 컴파일
-- `javac -d class ./src/academy/pocu/comp2500/assignment3/*.java ./src/academy/pocu/comp2500/assignment3/app/*.java`
+- `javac -d class ./src/wargame/*.java ./src/wargame/app/*.java`
 #### 실행
-- `java -ea -cp ./class academy.pocu.comp2500.assignment3.app.Program`
+- `java -ea -cp ./class wargame.app.Program `
 
 
