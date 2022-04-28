@@ -286,8 +286,4 @@ public final class Tank extends Unit implements IMovable, IThinkable {
 
         }
     }
-
-    private void loggerMode(String direction, boolean shouldStop) {
-        System.out.println(String.format("%s에 적발견? %s", direction, shouldStop));
-    }
 }
