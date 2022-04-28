@@ -31,6 +31,9 @@ public class Program {
         // MineAirUnit();
         // TurretNoAirNoAction();
         // SmartMineBombSensor();
+        // OnlyMarinTest();
+        // OnlyWraithTest();
+        // TankAndTurret();
 
         // SimulationTest0_0();
         // SimulationTest0_1();
