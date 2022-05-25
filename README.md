@@ -35,4 +35,5 @@
 ##### 해결
 - 각각 동작("부딪히면 폭발(ICollisionEventListner)", "사정권안에 있으면 적 공격(IThinkable)", "이동(IMovable)")을 정의하고 동작에 맞는 인터페이스를 만든다.
 - 각 동작을 수행할 수 있는 유닛의 클래스가 각 동작의 인터페이스를 상속 받는다.
-- 
+- 프로그램이 시작될 때 ICollisionEventListner, IThinkable, IMovable 배열에 각동작에 해당하는 유닛을 집어넣는다.
+- 프래임 안에서 각 동작(ICollisionEventListner, IThinkable, IMovable)에 해당하는 인터페이스 배열을 반복문으로 돌리면서 동작을 다형적으로 실행한다
