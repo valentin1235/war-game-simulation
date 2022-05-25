@@ -22,9 +22,9 @@
 - [LINK](https://youtu.be/7DalTaIuk_E)
 
 ## 실행
-#### 컴파일
+##### 컴파일
 - `javac -d class ./src/wargame/*.java ./src/wargame/app/*.java`
-#### 실행
+##### 실행
 - `java -ea -cp ./class wargame.app.Program `
 
 ## 이슈 로그
